@@ -1,0 +1,2 @@
+docker build . --tag docker-ubuntu-unity-novnc
+docker-compose up

@@ -1,5 +1,5 @@
-FROM ubuntu:16.04
-MAINTAINER Jacob <chenjr0719@gmail.com>
+FROM ubuntu:20.04
+LABEL GOEL <theshubhamgoel@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV USER ubuntu
@@ -27,16 +27,16 @@ RUN apt-get install -y \
         curl \
         git \
         pwgen \
-        libtasn1-3-bin \
+        libtasn1-bin \
         libglu1-mesa \
     && apt-get autoclean \
     && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/*
 
 # Download tigerVNC binaries
-ADD https://dl.bintray.com/tigervnc/stable/tigervnc-1.9.0.x86_64.tar.gz $HOME/tigervnc/tigervnc.tar.gz
+ADD https://dl.bintray.com/tigervnc/stable/tigervnc-1.10.1.x86_64.tar.gz $HOME/tigervnc/tigervnc.tar.gz
 RUN tar xmzf $HOME/tigervnc/tigervnc.tar.gz -C $HOME/tigervnc/ && rm $HOME/tigervnc/tigervnc.tar.gz
-RUN cp -R $HOME/tigervnc/tigervnc-1.9.0.x86_64/* / && rm -rf $HOME/tigervnc/
+RUN cp -R $HOME/tigervnc/tigervnc-1.10.1.x86_64/* / && rm -rf $HOME/tigervnc/
 
 # Clone noVNC.
 RUN git clone https://github.com/novnc/noVNC.git $HOME/noVNC
